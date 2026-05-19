@@ -740,6 +740,8 @@ function initializeLoadFormat(nodeType, nodeData) {
 }
 
 function addUploadWidget(nodeType, nodeData, widgetName, type="video") {
+    console.info('addUploadWidget: removed by remux');
+    return;
     let accept = {'video': ["video/webm","video/mp4","video/x-matroska","image/gif"],
                   'audio': ["audio/mpeg","audio/wav","audio/x-wav","audio/ogg"]}
     chainCallback(nodeType.prototype, "onNodeCreated", function() {

@@ -431,7 +431,7 @@ class LoadVideoUpload:
                 if len(file_parts) > 1 and (file_parts[-1].lower() in video_extensions):
                     files.append(f)
         return {"required": {
-                    "video": (sorted(files),),
+                    "video": (sorted(files), {'video_upload': True}), # hack by remux 'video_upload'
                     "force_rate": (floatOrInt, {"default": 0, "min": 0, "max": 60, "step": 1, "disable": 0}),
                     "custom_width": ("INT", {"default": 0, "min": 0, "max": DIMMAX, 'disable': 0}),
                     "custom_height": ("INT", {"default": 0, "min": 0, "max": DIMMAX, 'disable': 0}),
@@ -530,7 +530,7 @@ class LoadVideoFFmpegUpload:
                 if len(file_parts) > 1 and (file_parts[-1].lower() in video_extensions):
                     files.append(f)
         return {"required": {
-                    "video": (sorted(files),),
+                    "video": (sorted(files), {'video_upload': True}), # hack by remux 'video_upload'
                     "force_rate": (floatOrInt, {"default": 0, "min": 0, "max": 60, "step": 1, "disable": 0}),
                     "custom_width": ("INT", {"default": 0, "min": 0, "max": DIMMAX, 'disable': 0}),
                     "custom_height": ("INT", {"default": 0, "min": 0, "max": DIMMAX, 'disable': 0}),

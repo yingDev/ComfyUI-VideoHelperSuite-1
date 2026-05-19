@@ -675,13 +675,15 @@ class LoadAudioUpload:
     def INPUT_TYPES(s):
         input_dir = folder_paths.get_input_directory()
         files = []
+        ''' hack by remux
         for f in os.listdir(input_dir):
             if os.path.isfile(os.path.join(input_dir, f)):
                 file_parts = f.split('.')
                 if len(file_parts) > 1 and (file_parts[-1] in audio_extensions):
                     files.append(f)
+        '''
         return {"required": {
-                    "audio": (sorted(files),),},
+                    "audio": (sorted(files), {'audio_upload': True}),},
                 "optional": {
                     "start_time": ("FLOAT" , {"default": 0, "min": 0, "max": 10000000, "step": 0.01, "widgetType": "VHSTIMESTAMP"}),
                     "duration": ("FLOAT" , {"default": 0, "min": 0, "max": 10000000, "step": 0.01, "widgetType": "VHSTIMESTAMP"}),
